@@ -1,0 +1,162 @@
+<html>
+<head> <title> Add a New Member </title>
+
+</head>
+<body>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="index.html">OCFR</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="certification.html">Certifications</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="modifyMember.html">Modify Members</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="members.html">Members</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="reports.html">Reports</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <!-- responsive equal width cols, can be sm, md, lg, or xl -->
+    <div class="row">
+      <div class="col-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </div>
+      <div class="col-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+      <div class="col-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </div>
+    </div>
+
+</div>
+<hr>
+<form>
+  <div class="form-group row">
+    <label for="inputfirstName" class="col-sm-2 col-form-label">First Name</label>
+    <div class="col-sm-10">
+      <input type="string" class="form-control" id="firstName" placeholder="John">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputlastName" class="col-sm-2 col-form-label">Last Name</label>
+    <div class="col-sm-10">
+      <input type="string" class="form-control" id="lastName" placeholder="Doe">
+    </div>
+  </div>
+  <fieldset class="form-group">
+    <div class="row">
+      <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="male" checked>
+          <label class="form-check-label" for="gridRadios1">
+            Male
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="female">
+          <label class="form-check-label" for="gridRadios2">
+            Female
+          </label>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <div class="form-group row">
+  <label for="example-datetime-local-input" class="col-2 col-form-label">Date of Birth</label>
+  <div class="col-10">
+    <input class="form-control" type="datetime-local" value="1996-08-19" id="dateofBirth">
+  </div>
+</div>
+  <div class="form-group row">
+    <label for="inputAddress" class="col-sm-2 col-form-label">Address</label>
+    <div class="col-sm-10">
+      <input type="string" class="form-control" id="address" placeholder="100 South Maple Drive">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputEmail" class="col-sm-2 col-form-label">Email Address</label>
+    <div class="col-sm-10">
+      <input type="string" class="form-control" id="email" placeholder="johndoe@gmail.com">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label" for="inlineFormCustomSelectPref">Position</label>
+    <div class="col-sm-10">
+      <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+        <option selected>Choose...</option>
+        <option value="juniorFirefighter">Junior Firefighter</option>
+        <option value="seniorFirefighter">Senior Firefighter</option>
+        <option value="battalionChief">Battalion Chief</option>
+        <option value="captain">Captain</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group row">
+  <label for="example-datetime-local-input" class="col-2 col-form-label">Start Date</label>
+  <div class="col-10">
+    <input class="form-control" type="datetime-local" value="2016-10-19" id="startDate">
+  </div>
+</div>
+  <div class="form-group row">
+    <label for="inputradioNumber" class="col-sm-2 col-form-label">Radio Number</label>
+    <div class="col-sm-10">
+      <input type="string" class="form-control" id="radioNumber" placeholder="100000">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputstationNumber" class="col-sm-2 col-form-label">Station Number</label>
+    <div class="col-sm-10">
+      <input type="integer" class="form-control" id="stationNumber" placeholder="999999">
+    </div>
+  </div>
+  <fieldset class="form-group">
+    <div class="row">
+      <legend class="col-form-label col-sm-2 pt-0">Active?</legend>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="active" checked>
+          <label class="form-check-label" for="gridRadios1">
+            Yes
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="inactive">
+          <label class="form-check-label" for="gridRadios2">
+            No
+          </label>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <div class="form-group row">
+    <div class="col-sm-4">
+      <button type="submit" class="btn btn-primary">Add Member</button>
+    </div>
+    <div class="col-sm-4">
+      <button type="submit" class="btn btn-primary">Delete Member</button>
+    </div>
+    <div class="col-sm-4">
+      <button type="submit" class="btn btn-primary">Delete Certification</button>
+    </div>
+
+  </div>
+</form>
+
+</body>
