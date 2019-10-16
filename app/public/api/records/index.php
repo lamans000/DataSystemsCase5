@@ -2,12 +2,12 @@
 // Step 1: Get a datase connection from our help class
 $db = DbConnection::getConnection();
 // Step 2: Create & run the query
-if (isset($_GET['guid'])) {
+if (isset($_GET['memberID'])) {
   $stmt = $db->prepare(
     'SELECT * FROM Patient
     WHERE patientGuid = ?'
   );
-  $stmt->execute([$_GET['guid']]);
+  $stmt->execute([$_GET['memberID']]);
 } else {
   $stmt = $db->prepare('SELECT * FROM Patient');
   $stmt->execute();
