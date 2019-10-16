@@ -2,6 +2,8 @@
 // Step 1: Get a datase connection from our help class
 $db = DbConnection::getConnection();
 // Step 2: Create & run the query
+
+
 if (isset($_GET['guid'])) {
   $stmt = $db->prepare(
     'SELECT * FROM Patient
@@ -9,7 +11,9 @@ if (isset($_GET['guid'])) {
   );
   $stmt->execute([$_GET['guid']]);
 } else {
-  $stmt = $db->prepare('SELECT * FROM Patient');
+  $stmt = $db->prepare('SELECT m.memberID, m.firstName,m.lastName,m.dob,m.gender,m.startDate,m.street,m.city,m.state,m.zip,m.email,m.workPhoneNumber,m.mobilePhoneNumber,m.jobTitle,m.radioNumber,m.stationNumber,m.isActive,c.certificationName
+  FROM Member as m, Certifications as c, MemberCertifications as mc
+  WHERE m.memberID = mc.memberID AND c.certificationID = mc.certificationID;');
   $stmt->execute();
 }
 $patients = $stmt->fetchAll();
