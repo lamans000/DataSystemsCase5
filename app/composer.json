@@ -6,6 +6,10 @@
         "name": "Team 5"
     }],
 
+    "require": {
+      "ramsey/uuid": "^3.8"
+    },
+
     "autoload": {
         "classmap": ["class/DbConnection.php"]
     }
