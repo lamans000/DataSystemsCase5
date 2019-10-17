@@ -6,7 +6,8 @@ $db = DbConnection::getConnection();
 
 if (isset($_GET['guid'])) {
   $stmt = $db->prepare(
-    'SELECT * FROM Member'
+    'SELECT * FROM Patient
+    WHERE patientGuid = ?'
   );
   $stmt->execute([$_GET['memberID']]);
 } else {
@@ -15,9 +16,9 @@ if (isset($_GET['guid'])) {
   WHERE m.memberID = mc.memberID AND c.certificationID = mc.certificationID;');
   $stmt->execute();
 }
-$members = $stmt->fetchAll();
+$patients = $stmt->fetchAll();
 // Step 3: Convert to JSON
-$json = json_encode($members, JSON_PRETTY_PRINT);
+$json = json_encode($patients, JSON_PRETTY_PRINT);
 // Step 4: Output
 header('Content-Type: application/json');
 echo $json;

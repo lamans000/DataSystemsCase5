@@ -6,7 +6,10 @@ $guid = Uuid::uuid4()->toString(); // i.e. 25769c6c-d34d-4bfe-ba98-e0ee856f3e7a
 $db = DbConnection::getConnection();
 // Step 2: Create & run the query
 $stmt = $db->prepare(
+<<<<<<< Updated upstream
 <<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
   'INSERT INTO Member (memberID, firstName, lastName, dob, gender,
 startDate, street, city, state, zip, email, workPhoneNumber, mobilePhoneNumber
 ,jobTitle, radioNumber, stationNumber, isActive)
@@ -30,6 +33,7 @@ $stmt->execute([
   $_POST['radioNumber'],
   $_POST['stationNumber'],
   $_POST['isActive']
+<<<<<<< Updated upstream
 =======
   'INSERT INTO Member (memberID, firstName)
   VALUES (?, ?)'
@@ -38,6 +42,8 @@ $stmt->execute([
   $guid,
   $_POST['firstName']
 >>>>>>> Colin_10-16
+=======
+>>>>>>> Stashed changes
 ]);
 // Step 4: Output
 header('HTTP/1.1 303 See Other');
