@@ -6,9 +6,7 @@ $guid = Uuid::uuid4()->toString(); // i.e. 25769c6c-d34d-4bfe-ba98-e0ee856f3e7a
 $db = DbConnection::getConnection();
 // Step 2: Create & run the query
 $stmt = $db->prepare(
-  'INSERT INTO Member (memberID, firstName, lastName, dob, gender,
-startDate, street, city, state, zip, email, workPhoneNumber, mobilePhoneNumber
-,jobTitle, radioNumber, stationNumber, isActive)
+  'INSERT INTO Member (memberID, firstName, lastName, dob, gender, startDate, street, city, state, zip, email, workPhoneNumber, mobilePhoneNumber, jobTitle, radioNumber, stationNumber, isActive)
   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
 );
 $stmt->execute([
