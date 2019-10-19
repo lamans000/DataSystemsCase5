@@ -33,7 +33,7 @@
         <a class="nav-link" href="certification.html">Certifications</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="modifyMember.html">Modify Members</a>
+        <a class="nav-link" href="InsertMember.html">Modify Members</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="members.html">Members</a>
@@ -98,6 +98,13 @@
       <td>(631)-326-9189</td>
       <td>yvonne.kennedy@example.com</td>
       <td>Yes</td>
+      <td>
+        <div id="insertMemberApp">
+        <form action ="InsertMember.html" @submit.prevent="handleSubmit">
+        <button type="submit" class="btn btn-primary">Edit Member details</button>
+      </form>
+        </div>
+      </td>
 
 
 
@@ -212,6 +219,13 @@
         <td>{{ m.city }}</td>
         <td>{{ m.state }}</td>
         <td>{{ m.zip }}</td>
+        <td>
+          <div id="insertMemberApp">
+          <form action ="InsertMember.html" @submit.prevent="handleSubmit">
+          <button type="submit" class="btn btn-primary">Edit Member details</button>
+        </form>
+          </div>
+        </td>
       </tr>
     </tbody>
   </table>
