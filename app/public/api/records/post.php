@@ -27,7 +27,6 @@ $stmt->execute([
   $_POST['radioNumber'],
   $_POST['stationNumber'],
   $_POST['isActive']
-
 ]);
 // Step 4: Output
 header('HTTP/1.1 303 See Other');
