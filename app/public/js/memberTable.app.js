@@ -10,7 +10,7 @@ var memberTableApp = new Vue({
       .then(json => { memberTableApp.members = json })
     },
     handleRowClick(member) {
-      insertMemberApp.member = member;
+      updateMemberApp.member = member;
     }
   },
   created() {

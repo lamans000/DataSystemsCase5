@@ -1,5 +1,5 @@
 <html>
-<head> <title> Members Page </title>
+<head> <title> Update Members Page </title>
 
 </head>
 <body>
@@ -86,48 +86,42 @@
 
 </div>
 
-<div id="updateMemberApp">
-<form @submit.prevent="handleUpdate">
-  <div class="form-group row">
-    <label for="memberID" class="col-sm-2 col-form-label">MemberID</label>
-    <div class="col-sm-10">
-      <input type="string" class="form-control" id="memberID" placeholder="000" v-model="member.memberID" readonly>
-    </div>
-  </div>
+<div id="insertMemberApp">
+<form>
   <div class="form-group row">
     <label for="inputfirstName" class="col-sm-2 col-form-label">First Name</label>
     <div class="col-sm-10">
-      <input type="string" class="form-control" id="firstName" placeholder="John" v-model="member.firstName">
+      <input type="string" class="form-control" id="firstName" placeholder="John">
     </div>
   </div>
   <div class="form-group row">
     <label for="inputlastName" class="col-sm-2 col-form-label">Last Name</label>
     <div class="col-sm-10">
-      <input type="string" class="form-control" id="lastName" placeholder="Doe" v-model="member.lastName">
+      <input type="string" class="form-control" id="lastName" placeholder="Doe">
     </div>
   </div>
   <div class="form-group row">
     <label for="inputGender" class="col-sm-2 col-form-label">Gender</label>
     <div class="col-sm-10">
-      <input type="string" class="form-control" id="gender" placeholder="M | F" v-model="member.gender">
+      <input type="string" class="form-control" id="gender" placeholder="M | F">
     </div>
   </div>
   <div class="form-group row">
   <label for="example-datetime-local-input" class="col-2 col-form-label">Date of Birth</label>
   <div class="col-10">
-    <input class="form-control" type="date" value="1996-08-19" id="dateofBirth" v-model="member.dob">
+    <input class="form-control" type="date" value="1996-08-19" id="dateofBirth">
   </div>
 </div>
   <div class="form-group row">
     <label for="inputAddress" class="col-sm-2 col-form-label">Address</label>
     <div class="col-sm-10">
-      <input type="string" class="form-control" id="address" placeholder="100 South Maple Drive" v-model="member.street">
+      <input type="string" class="form-control" id="address" placeholder="100 South Maple Drive">
     </div>
   </div>
   <div class="form-group row">
     <label for="inputEmail" class="col-sm-2 col-form-label">Email Address</label>
     <div class="col-sm-10">
-      <input type="string" class="form-control" id="email" placeholder="johndoe@gmail.com" v-model="member.email">
+      <input type="string" class="form-control" id="email" placeholder="johndoe@gmail.com">
     </div>
   </div>
   <div class="form-group row">
@@ -145,7 +139,7 @@
   <div class="form-group row">
   <label for="example-datetime-local-input" class="col-2 col-form-label">Start Date</label>
   <div class="col-10">
-    <input class="form-control" type="date" value="2016-10-19" id="startDate" v-model="member.startDate">
+    <input class="form-control" type="date" value="2016-10-19" id="startDate">
   </div>
 </div>
   <div class="form-group row">
@@ -189,9 +183,11 @@
 </form>
 </div>
 
+</body>
+
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="js/memberTable.app.js"></script>
-<script src="js/insertMember.app.js"></script>
 <script src="js/updateMember.app.js"></script>
 
 </body>
+</html>
