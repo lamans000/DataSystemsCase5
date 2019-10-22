@@ -8,6 +8,9 @@ var memberTableApp = new Vue({
       fetch('api/records/')
       .then(response => response.json())
       .then(json => { memberTableApp.members = json })
+    },
+    handleRowClick(member) {
+      insertMemberApp.member = member;
     }
   },
   created() {
