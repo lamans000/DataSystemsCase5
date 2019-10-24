@@ -4,7 +4,7 @@ var updateMemberApp = new Vue({
     member: {}
   },
   methods: {
-    handleSubmit() {
+    handleUpdate() {
       fetch('api/records/update.php',
       {
         method:'POST',
@@ -13,6 +13,24 @@ var updateMemberApp = new Vue({
           "Content-Type": "application/json; charset=utf-8" //UTF-8 is a character encoding standard for representing letters and numbers
         }
       })
+      this.handleReset();
+    },
+    handleReset() {
+      this.member = {
+      memberID: '',
+      firstName: '',
+      lastName: '',
+      gender: '',
+      dob: '',
+      address:'',
+      email:'',
+      startDate: '',
+      radioNumber:'',
+      stationNumber:''
+      }
     }
-  }
+  },
+  created() {
+  this.handleReset();
+}
 });

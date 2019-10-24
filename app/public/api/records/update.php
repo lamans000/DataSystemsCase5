@@ -28,6 +28,6 @@ $stmt->execute([
   $_POST['stationNumber']
   $_POST['isActive']
 ]);
-Step 4: Output
+// Step 4: Output
 header('HTTP/1.1 303 See Other');
 header('Location: ../records/?guid=' . $guid);
