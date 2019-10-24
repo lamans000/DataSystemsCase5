@@ -10,8 +10,9 @@ $stmt = $db->prepare('UPDATE Member SET firstName = ? WHERE memberID = ?');
 $stmt->execute([
   // $guid,
   $_POST['firstName'],
+  // $_POST['lastName'],
   $_POST['memberID']
-  // $_POST['dob'],
+  // $_POST['dob']
   // $_POST['gender'],
   // $_POST['startDate'],
   // $_POST['street'],

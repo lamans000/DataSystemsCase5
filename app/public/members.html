@@ -87,8 +87,8 @@
 
 </div>
 
-<div id="updateMemberApp">
-<form @submit.prevent="handleUpdate">
+<div id="updateMemberApp" @submit.prevent="handleUpdate">
+<form>
   <div class="form-group row">
     <label for="memberID" class="col-sm-2 col-form-label">MemberID</label>
     <div class="col-sm-10">
@@ -161,7 +161,7 @@
       <input type="integer" class="form-control" id="stationNumber" placeholder="999999">
     </div>
   </div>
-  
+
   <!-- <fieldset class="form-group">
     <div class="row">
       <legend class="col-form-label col-sm-2 pt-0">Active?</legend>
