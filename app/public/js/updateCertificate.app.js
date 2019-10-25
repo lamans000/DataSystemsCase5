@@ -13,7 +13,30 @@ var updateCertificateApp = new Vue({
           "Content-Type": "application/json; charset=utf-8"
         }
       })
-      // this.handleReset();
+      this.handleReset();
+    },
+    handleSubmit() {
+      fetch('api/certificates/post.php',
+      {
+        method:'POST',
+        body: JSON.stringify(this.certificate),
+        headers: {
+          "Content-Type": "application/json; charset=utf-8"
+        }
+      })
+      this.handleReset();
+      location.reload(true);
+    },
+    handleReset() {
+      this.certificate = {
+      certificationID: '',
+      certificationName: '',
+      certifyingAgency: '',
+      expirationPeriod:''
+      }
     }
+  },
+  created() {
+    this.handleReset();
   }
-})
+});
