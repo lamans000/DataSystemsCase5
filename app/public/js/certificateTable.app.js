@@ -8,10 +8,10 @@ var certificateTableApp = new Vue({
       fetch('api/certificates/')
       .then(response => response.json())
       .then(json => { certificateTableApp.certificates = json })
+    },
+    handleRowClick(certificate) {
+      updateCertificateApp.certificate = certificate;
     }
-    // handleRowClick(member) {
-    //   updateMemberApp.member = member;
-    // }
   },
   created() {
     this.fetchMembers();
