@@ -19,12 +19,13 @@ var updateMemberApp = new Vue({
       fetch('api/records/delete.php',
       {
         method:'POST',
-        body: JSON.stringify(this.member), //convert this into a string of bytes so you can send it across the network.
+        body: JSON.stringify(this.member),
         headers: {
-          "Content-Type": "application/json; charset=utf-8" //UTF-8 is a character encoding standard for representing letters and numbers
+          "Content-Type": "application/json; charset=utf-8"
         }
       })
       this.handleReset();
+      location.reload(true);
     },
     handleReset() {
       this.member = {
