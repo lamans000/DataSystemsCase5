@@ -70,3 +70,7 @@ INSERT INTO MemberCertifications (memberID, certificationID) VALUES
 ("3","11"),
 ("3","3")
 ;
+
+SELECT m.memberID, m.firstName, m.lastName, c.certificationID, x.certificationName
+FROM Member as m, MemberCertifications as c, Certifications as x
+WHERE m.memberID = c.memberID AND c.certificationID = x.certificationID;
