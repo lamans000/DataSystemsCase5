@@ -54,10 +54,10 @@
 
   <br>
 
-  <table class="table table-sm table-hover">
-    <thead>
+  <table class="table table-hover">
+    <thead class="thead-dark">
       <tr>
-        <th>memberID</th>
+        <th>Member ID</th>
         <th>First Name</th>
         <th>Last Name</th>
         <th>Gender</th>
@@ -219,26 +219,32 @@
     </div>
   </fieldset> -->
 
+</form>
+
   <div class="form-group row">
     <div class="col-sm-4">
-      <button type="submit" class="btn btn-primary btn-block">Update Member</button>
+      <button type="submit" class="btn btn-success btn-block" @click="handleSubmit">Add New Member</button>
     </div>
-
   </div>
 
-</form>
-  <form @submit.prevent="handleDelete">
-    <div class="form-group row">
-      <div class="col-sm-4">
-        <button type="submit" class="btn btn-danger btn-block">Delete Member</button>
-      </div>
-  </form>
+  <div class="form-group row">
+    <div class="col-sm-4">
+      <button type="submit" class="btn btn-primary btn-block" @click="handleUpdate">Update Member</button>
+    </div>
+  </div>
 
-</div>
+  <div class="form-group row">
+    <div class="col-sm-4">
+      <button type="submit" class="btn btn-danger btn-block" @click="handleDelete">Delete Member</button>
+    </div>
+  </div>
+
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="js/memberTable.app.js"></script>  
+<script src="js/memberTable.app.js"></script>
 <script src="js/updateMember.app.js"></script>
 
 </body>
+</body>
+</html>

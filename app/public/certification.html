@@ -1,5 +1,5 @@
 <html>
-<head> <title> Members Page </title>
+<head> <title> Certifications Page </title>
 
 </head>
 <body>
@@ -71,7 +71,9 @@
 </div>
 
 <div id="updateCertificateApp" class="container">
-<form @submit.prevent="handleUpdate">
+
+<form>
+  
   <div class="form-group row">
     <label for="memberID" class="col-sm-2 col-form-label">Certification ID</label>
     <div class="col-sm-10">
@@ -97,23 +99,26 @@
     </div>
   </div>
 
+</form>
+
   <div class="form-group row">
     <div class="col-sm-4">
-      <button type="submit" class="btn btn-primary btn-block">Update Certification</button>
+      <button type="submit" class="btn btn-success btn-block" @click="handleSubmit">Add Certification</button>
     </div>
   </div>
 
-</form>
-  <form @submit.prevent="handleSubmit">
-    <div class="form-group row">
-      <div class="col-sm-4">
-        <button type="submit" class="btn btn-danger btn-block">Add Certification</button>
-      </div>
-  </form>
+  <div class="form-group row">
+    <div class="col-sm-4">
+      <button type="submit" class="btn btn-primary btn-block" @click="handleUpdate">Update Certification</button>
+    </div>
+  </div>
 
-</form>
+  <div class="form-group row">
+    <div class="col-sm-4">
+      <button type="submit" class="btn btn-danger btn-block" @click="handleDelete">Delete Certification</button>
+    </div>
+  </div>
 
-</div>
 </div>
 
 
