@@ -1,7 +1,10 @@
 var memberCertificationsTable = new Vue({
   el: '#memberCertificationsTable',
   data: {
-    memberCertificates: []
+    memberCertificates: [],
+    filter: {
+      certificationName: ''
+    }
   },
   methods: {
     fetchMembers() {
