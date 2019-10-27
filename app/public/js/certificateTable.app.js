@@ -4,7 +4,7 @@ var certificateTableApp = new Vue({
     certificates: []
   },
   methods: {
-    fetchMembers() {
+    fetchCertificates() {
       fetch('api/certificates/')
       .then(response => response.json())
       .then(json => { certificateTableApp.certificates = json })
@@ -14,6 +14,6 @@ var certificateTableApp = new Vue({
     }
   },
   created() {
-    this.fetchMembers();
+    this.fetchCertificates();
   }
 })
