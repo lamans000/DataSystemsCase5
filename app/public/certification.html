@@ -1,5 +1,5 @@
 <html>
-<head> <title> Members Page </title>
+<head> <title> Certifications Page </title>
 
 </head>
 <body>
@@ -31,9 +31,6 @@
         <a class="nav-link" href="certification.html">Certifications</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="modifyMember.html">Modify Members</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" href="members.html">Members</a>
       </li>
       <li class="nav-item">
@@ -47,71 +44,164 @@
   </div>
 </nav>
 
-<!-- responsive equal width cols, can be sm, md, lg, or xl -->
-
-<table class="table">
+<div id="certificateTableApp" class="container">
+<table class="table table-hover">
   <thead class="thead-dark">
     <tr>
-      <th>#</th>
-      <th>Certifying Agency</th>
+      <th>Certification ID</th>
       <th>Certification Name</th>
-      <th>Default Expiration Date</th>
-      <th>Certificate Holder</th>
+      <th>Certifying Agency</th>
+      <th>Expiration Period</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>CPR for Healthcare Providers/American Heart Association</td>
-      <td>CPR</td>
-      <td>10/7/2019</td>
-      <td>Mark Otto</td>
-
-
-
+    <tr v-for="c in certificates" @click="handleRowClick(c)">
+      <td>{{ c.certificationID }}</td>
+      <td>{{ c.certificationName }}</td>
+      <td>{{ c.certifyingAgency }}</td>
+      <td>{{ c.expirationPeriod }}</td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Firefighter I (Athens Technical College)</td>
-      <td>Firefighter I</td>
-      <td>10/7/2022</td>
-      <td>Jacob Thorton</td>
-
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Firefighter I (Ivy Technical College)</td>
-      <td>Firefighter I</td>
-      <td>01/7/2022</td>
-      <td>Anson Lam</td>
-
-    </tr>
-    <tr>
-      <th scope="row">4</th>
-      <td>POST (Georgia POST Academy)</td>
-      <td>POST</td>
-      <td>06/07/2027</td>
-      <td>Riley McGrath</td>
-
-    </tr>
-    <tr>
-      <th scope="row">5</th>
-      <td>POST (Georgia POST Academy)</td>
-      <td>POST</td>
-      <td>03/07/2027</td>
-      <td>Colin Ooi</td>
-
-    </tr>
-    <tr>
-      <th scope="row">6</th>
-      <td>POST (Georgia POST Academy)</td>
-      <td>POST</td>
-      <td>02/07/2027</td>
-      <td>Sneha Rao/td>
-
-    </tr>
-
   </tbody>
 </table>
+</div>
+
+<div id="updateCertificateApp" class="container">
+
+<form>
+
+  <div class="form-group row">
+    <label for="memberID" class="col-sm-2 col-form-label">Certification ID</label>
+    <div class="col-sm-10">
+      <input type="string" class="form-control" id="memberID" placeholder="15" v-model="certificate.certificationID" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="memberID" class="col-sm-2 col-form-label">Certification Name</label>
+    <div class="col-sm-10">
+      <input type="string" class="form-control" id="memberID" placeholder="HAZMAT" v-model="certificate.certificationName">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="memberID" class="col-sm-2 col-form-label">Certifying Agency</label>
+    <div class="col-sm-10">
+      <input type="string" class="form-control" id="memberID" placeholder="Athens Technical College" v-model="certificate.certifyingAgency">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="memberID" class="col-sm-2 col-form-label">Expiration Period</label>
+    <div class="col-sm-10">
+      <input type="string" class="form-control" id="memberID" placeholder="11/10/2020" v-model="certificate.expirationPeriod">
+    </div>
+  </div>
+
+</form>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-12 col-sm-4">
+      <button type="submit" class="btn btn-success btn-block" @click="handleSubmit">Add Certification</button>
+    </div>
+    <div class="col-12 col-sm-4">
+      <button type="submit" class="btn btn-primary btn-block" @click="handleUpdate">Update Certification</button>
+    </div>
+    <div class="col-12 col-sm-4">
+      <button type="submit" class="btn btn-danger btn-block" @click="handleDelete">Delete Certification</button>
+    </div>
+  </div>
+
+</div>
+
+</div>
+
+<br>
+
+<div id="memberCertificationsTable" class="container">
+
+  <div class="filter">
+    <select class="custom-select" v-model="filter.certificationName">
+      <option value="">(all)</option>
+      <option>CPR</option>
+      <option>Firefighter I</option>
+      <option>Firefighter II</option>
+      <option>Firefighter III</option>
+      <option>Firefighter IV</option>
+      <option>POST</option>
+      <option>HAZMAT</option>
+      <option>Extrication</option>
+      <option>EMT-Adv</option>
+      <option>Due Regard</option>
+      <option>Paramedic</option>
+    </select>
+  </div>
+  <br>
+
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>Member ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Certification ID</th>
+        <th>Certification Name</th>
+        <th>Certifying Agency</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="m in memberCertificates" @click="handleRowClick(m)" v-if="filter.certificationName == '' || filter.certificationName == m.certificationName">
+        <td>{{ m.memberID }}</td>
+        <td>{{ m.firstName }}</td>
+        <td>{{ m.lastName }}</td>
+        <td>{{ m.certificationID }}</td>
+        <td>{{ m.certificationName }}</td>
+        <td>{{ m.certifyingAgency }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Dynamic Dropdown completed with assistance from: https://stackoverflow.com/questions/43193721/vue-js-dynamic-dropdown -->
+<div id="updateMemberCertificationsTableApp" class="container">
+  <!-- Dropdown for Members -->
+  <select class="custom-select" v-model="memberCertificates.memberID">
+    <option disabled value="">Select a Member</option>
+    <option v-for="m in members":value="memberCertificates.memberID" v-bind="memberCertificates.memberID">{{ m.firstName }} <p> </p> {{ m.lastName }}</option>
+  </select>
+  <!-- Dropdown for Existing Certifications -->
+  <select class="custom-select" v-model="memberCertificates.certificationID">
+    <option disabled value="">Select a Certification</option>
+    <option v-for="c in certificates":value="memberCertificates.certificationID" v-bind="memberCertificates.certificationID">{{ c.certificationName }} <p>/</p> {{ c.certifyingAgency }}</option>
+  </select>
+
+<!--
+  <div class="form-group row">
+    <label for="certificationReceived" class="col-sm-2 col-form-label">Certification Received</label>
+    <div class="col-sm-10">
+      <input type="string" class="form-control" id="certificationReceived" placeholder="11/10/2020" v-model="memberCertificates.certificationReceived">
+    </div>
+  </div> -->
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col-12 col-sm-4">
+        <button type="submit" class="btn btn-success btn-block" @click="handleSubmit">Award Certification</button>
+      </div>
+    </div>
+
+  </div>
+
+  </div>
+
+
+<br>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/certificateTable.app.js"></script>
+<script src="js/updateCertificate.app.js"></script>
+<script src="js/memberCertificationsTable.app.js"></script>
+<script src="js/updateMemberCertificationsTable.app.js"></script>
 
 </body>
+</body>
+</html>

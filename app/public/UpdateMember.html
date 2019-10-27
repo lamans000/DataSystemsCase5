@@ -1,5 +1,5 @@
 <html>
-<head> <title> Add a New Member </title>
+<head> <title> Update Members Page </title>
 
 </head>
 <body>
@@ -16,8 +16,10 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="css/main.css" rel="stylesheet">
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="index.html"><h2>OCFR</h2></a>
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -47,14 +49,44 @@
   </div>
 </nav>
 
-<div class="container-fluid">
-  <!-- responsive equal width cols, can be sm, md, lg, or xl -->
-    <div class="row">
-      <h2 class="text-danger">Modify Member</h2>
-    </div>
+<div id="memberTableApp">
+
+  <br>
+
+  <table class="table table-sm table-hover">
+    <thead>
+      <tr>
+        <th>memberID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Date of Birth</th>
+        <th>Gender</th>
+        <th>Start Date</th>
+        <th>Street</th>
+        <th>City</th>
+        <th>State</th>
+        <th>ZIP</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="m in members" @click="handleRowClick(m)">
+        <td>{{ m.memberID }}</td>
+        <td>{{ m.firstName }}</td>
+        <td>{{ m.lastName }}</td>
+        <td>{{ m.dob }}</td>
+        <td>{{ m.gender }}</td>
+        <td>{{ m.startDate }}</td>
+        <td>{{ m.street }}</td>
+        <td>{{ m.city }}</td>
+        <td>{{ m.state }}</td>
+        <td>{{ m.zip }}</td>
+      </tr>
+    </tbody>
+  </table>
 
 </div>
-<hr>
+
+<div id="insertMemberApp">
 <form>
   <div class="form-group row">
     <label for="inputfirstName" class="col-sm-2 col-form-label">First Name</label>
@@ -74,36 +106,16 @@
       <input class="form-control" type="datetime-local" value="1996-08-19" id="dateofBirth" required>
     </div>
   </div>
-  <fieldset class="form-group">
-  <div class="row">
-    <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
+  <div class="form-group row">
+    <label for="inputGender" class="col-sm-2 col-form-label">Gender</label>
     <div class="col-sm-10">
-      <div class="form-check">
-        <input type="radio" name="gridRadios" id="gridRadios1" value="male">
-        <label for="gridRadios1">
-          Male
-        </label>
-      </div>
-      <div class="form-check">
-        <input type="radio" name="gridRadios" id="gridRadios2" value="female">
-        <label for="gridRadios2">
-          Female
-        </label>
-      </div>
+      <input type="string" class="form-control" id="gender" placeholder="M | F">
     </div>
   </div>
-  </fieldset>
   <div class="form-group row">
   <label for="example-datetime-local-input" class="col-2 col-form-label">Start Date</label>
   <div class="col-10">
-    <input class="form-control" type="datetime-local" value="2016-10-19" id="startDate">
-  </div>
-  </div>
-  <div class="form-group row">
-    <label for="inputAddress" class="col-sm-2 col-form-label">Street</label>
-    <div class="col-sm-10">
-      <input type="string" class="form-control" id="address" placeholder="100 South Maple Drive" required>
-    </div>
+    <input class="form-control" type="date" value="1996-08-19" id="dateofBirth">
   </div>
   <div class="form-group row">
     <label for="inputAddress" class="col-sm-2 col-form-label">City</label>
@@ -154,6 +166,12 @@
     </div>
   </div>
   <div class="form-group row">
+  <label for="example-datetime-local-input" class="col-2 col-form-label">Start Date</label>
+  <div class="col-10">
+    <input class="form-control" type="date" value="2016-10-19" id="startDate">
+  </div>
+</div>
+  <div class="form-group row">
     <label for="inputradioNumber" class="col-sm-2 col-form-label">Radio Number</label>
     <div class="col-sm-10">
       <input type="string" class="form-control" id="radioNumber" placeholder="100000">
@@ -165,7 +183,7 @@
       <input type="integer" class="form-control" id="stationNumber" placeholder="999999">
     </div>
   </div>
-  <fieldset class="form-group">
+  <!-- <fieldset class="form-group">
     <div class="row">
       <legend class="col-form-label col-sm-2 pt-0">Active?</legend>
       <div class="col-sm-10">
@@ -183,19 +201,22 @@
         </div>
       </div>
     </div>
-  </fieldset>
+  </fieldset> -->
+
   <div class="form-group row">
     <div class="col-sm-4">
-      <button type="submit" class="btn btn-danger">Add Member</button>
-    </div>
-    <div class="col-sm-4">
-      <button type="submit" class="btn btn-danger">Delete Member</button>
-    </div>
-    <div class="col-sm-4">
-      <button type="submit" class="btn btn-danger">Delete Certification</button>
+      <button type="submit" class="btn btn-primary">Update Member</button>
     </div>
 
   </div>
 </form>
+</div>
 
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/memberTable.app.js"></script>
+<script src="js/updateMember.app.js"></script>
+
+</body>
+</html>
