@@ -3,7 +3,7 @@ var updateMemberCertificationsTableApp = new Vue({
   data: {
     members: [],
     certificates: {},
-    memberCertificates: []
+    memberCertificates: {}
   },
   methods: {
     fetchMembers() {

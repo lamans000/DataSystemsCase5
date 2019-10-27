@@ -162,16 +162,30 @@
 
 <!-- Dynamic Dropdown completed with assistance from: https://stackoverflow.com/questions/43193721/vue-js-dynamic-dropdown -->
 <div id="updateMemberCertificationsTableApp" class="container">
+
+  <select class="custom-select" v-model="memberCertificates.memberCertification">
+    <option value="">71</option>
+  </select>
+
   <!-- Dropdown for Members -->
   <select class="custom-select" v-model="memberCertificates.memberID">
     <option disabled value="">Select a Member</option>
-    <option v-for="m in members":value="memberCertificates.memberID" v-bind="memberCertificates.memberID">{{ m.firstName }} <p> </p> {{ m.lastName }}</option>
+    <!-- <option v-for="m in members" v-bind:value="members.memberID">{{ m.firstName }} <p> </p> {{ m.lastName }}</option> -->
+    <option v-for="m in members" v-bind="m.memberID">{{ m.memberID }} - {{ m.firstName }} {{ m.lastName }}</option>
+    <!-- <option value="6">6</option> -->
   </select>
   <!-- Dropdown for Existing Certifications -->
   <select class="custom-select" v-model="memberCertificates.certificationID">
     <option disabled value="">Select a Certification</option>
-    <option v-for="c in certificates":value="memberCertificates.certificationID" v-bind="memberCertificates.certificationID">{{ c.certificationName }} <p>/</p> {{ c.certifyingAgency }}</option>
+    <!-- <option v-for="c in certificates" v-bind:value="certificates.certificationID">{{ c.certificationName }} <p>/</p> {{ c.certifyingAgency }}</option> -->
+    <option v-for="c in certificates" v-bind="c.certificationID">{{ c.certificationID}} - {{ c.certificationName }} / {{ c.certifyingAgency }}</option>
+    <!-- <option value="1">1</option> -->
   </select>
+
+  <!-- <select class="custom-select" v-model="memberCertificates">
+    <option disabled value="">Select a Member</option>
+    <option v-for="m in members":value="memberCertificates.memberID">{{ m.firstName }} <p> </p> {{ m.lastName }}</option>
+  </select> -->
 
 <!--
   <div class="form-group row">
