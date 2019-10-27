@@ -4,13 +4,13 @@ $db = DbConnection::getConnection();
 // Step 2: Create & run the query
 if (isset($_GET['guid'])) {
   $stmt = $db->prepare(
-    'SELECT m.memberID, m.firstName, m.lastName, c.certificationID, x.certificationName
+    'SELECT m.memberID, m.firstName, m.lastName, c.certificationID, x.certificationName, x.certifyingAgency
 FROM Member as m, MemberCertifications as c, Certifications as x
 WHERE m.memberID = c.memberID AND c.certificationID = x.certificationID;'
   );
   $stmt->execute([$_GET['guid']]);
 } else {
-  $stmt = $db->prepare('SELECT m.memberID, m.firstName, m.lastName, c.certificationID, x.certificationName
+  $stmt = $db->prepare('SELECT m.memberID, m.firstName, m.lastName, c.certificationID, x.certificationName, x.certifyingAgency
 FROM Member as m, MemberCertifications as c, Certifications as x
 WHERE m.memberID = c.memberID AND c.certificationID = x.certificationID;');
   $stmt->execute();

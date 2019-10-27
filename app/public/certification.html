@@ -96,33 +96,41 @@
 
 </form>
 
-  <div class="form-group row">
-    <div class="col-sm-4">
+<div class="container">
+
+  <div class="row">
+    <div class="col-12 col-sm-4">
       <button type="submit" class="btn btn-success btn-block" @click="handleSubmit">Add Certification</button>
     </div>
-  </div>
-
-  <div class="form-group row">
-    <div class="col-sm-4">
+    <div class="col-12 col-sm-4">
       <button type="submit" class="btn btn-primary btn-block" @click="handleUpdate">Update Certification</button>
     </div>
-  </div>
-
-  <div class="form-group row">
-    <div class="col-sm-4">
+    <div class="col-12 col-sm-4">
       <button type="submit" class="btn btn-danger btn-block" @click="handleDelete">Delete Certification</button>
     </div>
   </div>
+  
+</div>
 
 </div>
+
+<br>
 
 <div id="memberCertificationsTable" class="container">
 
   <div class="filter">
     <select v-model="filter.certificationName">
       <option value="">(all)</option>
-      <option>Firefighter II</option>
       <option>CPR</option>
+      <option>Firefighter I</option>
+      <option>Firefighter II</option>
+      <option>Firefighter III</option>
+      <option>Firefighter IV</option>
+      <option>POST</option>
+      <option>HAZMAT</option>
+      <option>Extrication</option>
+      <option>EMT-Adv</option>
+      <option>Due Regard</option>
       <option>Paramedic</option>
     </select>
   </div>
@@ -136,6 +144,7 @@
         <th>Last Name</th>
         <th>Certification ID</th>
         <th>Certification Name</th>
+        <th>Certifying Agency</th>
       </tr>
     </thead>
     <tbody>
@@ -145,6 +154,7 @@
         <td>{{ m.lastName }}</td>
         <td>{{ m.certificationID }}</td>
         <td>{{ m.certificationName }}</td>
+        <td>{{ m.certifyingAgency }}</td>
       </tr>
     </tbody>
   </table>

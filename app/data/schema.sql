@@ -71,6 +71,13 @@ INSERT INTO MemberCertifications (memberID, certificationID) VALUES
 ("3","3")
 ;
 
+-- Give a member a new certification
+INSERT INTO MemberCertifications (memberID, certificationID, certificationRecieved) VALUES ("6","13","2019-10-25");
+
+-- Show all members' certifications
 SELECT m.memberID, m.firstName, m.lastName, c.certificationID, x.certificationName
 FROM Member as m, MemberCertifications as c, Certifications as x
 WHERE m.memberID = c.memberID AND c.certificationID = x.certificationID;
+
+-- SHow expired certifications
+SELECT m.firstName as firstName, m.lastName as lastName, c.certificationName as cName, DATE_ADD(mc.certificationRecieved, INTERVAL c.expirationPeriod year) as dateExpired FROM ocfr.Member as m, ocfr.Certifications as c, ocfr.MemberCertifications as mc WHERE m.memberID = mc.memberID AND c.certificationID = mc.certificationID AND DATE_ADD(mc.certificationRecieved, INTERVAL c.expirationPeriod year) < CURDATE();
