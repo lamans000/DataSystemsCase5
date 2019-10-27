@@ -11,6 +11,9 @@ var memberCertificationsTable = new Vue({
       fetch('api/memberCertificates/')
       .then(response => response.json())
       .then(json => { memberCertificationsTable.memberCertificates = json })
+    },
+    handleRowClick(memberCertificate) {
+      updateMemberCertificationsTableApp.memberCertificate = memberCertificate;
     }
   },
   created() {

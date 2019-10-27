@@ -1,0 +1,153 @@
+<html>
+<head> <title> Certifications Page </title>
+
+</head>
+<body>
+  <!--Compiled and minified CSS-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!--jQuery CDN-->
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+
+  <!--Compiled and minified JavaScript-->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="css/main.css" rel="stylesheet">
+  <body>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="css/main.css" rel="stylesheet">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="index.html"><h2>OCFR</h2></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="certification.html">Certifications</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="members.html">Members</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="reports.html">Reports</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+<br>
+
+<div id="memberCertificationsTable" class="container">
+
+  <div class="filter">
+    <select class="custom-select" v-model="filter.certificationName">
+      <option value="">(all)</option>
+      <option v-for="m in memberCertificates">{{ m.certificationName }}</option>
+    </select>
+  </div>
+  <br>
+
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>Member Certification</th>
+        <th>Member ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Certification ID</th>
+        <th>Certification Name</th>
+        <th>Certifying Agency</th>
+        <th>Certification Received</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="m in memberCertificates" @click="handleRowClick(m)" v-if="filter.certificationName == '' || filter.certificationName == m.certificationName">
+        <td>{{ m.memberCertification }}</td>
+        <td>{{ m.memberID }}</td>
+        <td>{{ m.firstName }}</td>
+        <td>{{ m.lastName }}</td>
+        <td>{{ m.certificationID }}</td>
+        <td>{{ m.certificationName }}</td>
+        <td>{{ m.certifyingAgency }}</td>
+        <td>{{ m.certificationRecieved }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div id="updateMemberCertificationsTableApp" class="container">
+
+  <form>
+
+    <div class="form-group row">
+      <label for="memberID" class="col-sm-2 col-form-label">Member Certification</label>
+      <div class="col-sm-10">
+        <input type="string" class="form-control" id="memberCertification" placeholder="20" v-model="memberCertificate.memberCertification" readonly>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="memberID" class="col-sm-2 col-form-label">First Name</label>
+      <div class="col-sm-10">
+        <input type="string" class="form-control" id="firstName" placeholder="Anson" v-model="memberCertificate.firstName" readonly>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="memberID" class="col-sm-2 col-form-label">Last Name</label>
+      <div class="col-sm-10">
+        <input type="string" class="form-control" id="lastName" placeholder="Lam" v-model="memberCertificate.lastName" readonly>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="memberID" class="col-sm-2 col-form-label">Certification ID</label>
+      <div class="col-sm-10">
+        <input type="string" class="form-control" id="certificationID" placeholder="15" v-model="memberCertificate.certificationID" readonly>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="memberID" class="col-sm-2 col-form-label">Certification Name</label>
+      <div class="col-sm-10">
+        <input type="string" class="form-control" id="certificationName" placeholder="SCUBA" v-model="memberCertificate.certificationName" readonly>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="memberID" class="col-sm-2 col-form-label">Certifying Agency</label>
+      <div class="col-sm-10">
+        <input type="string" class="form-control" id="certifyingAgency" placeholder="Indiana University" v-model="memberCertificate.certifyingAgency" readonly>
+      </div>
+    </div>
+
+  </form>
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col-12">
+        <button type="submit" class="btn btn-danger btn-block" @click="handleDelete">Revoke Certification</button>
+      </div>
+    </div>
+
+  </div>
+
+  </div>
+
+
+<br>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/certificateTable.app.js"></script>
+<script src="js/updateCertificate.app.js"></script>
+<script src="js/memberCertificationsTable.app.js"></script>
+<script src="js/updateMemberCertificationsTable.app.js"></script>
+
+</body>
+</body>
+</html>
