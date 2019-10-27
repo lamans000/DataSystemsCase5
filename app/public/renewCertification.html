@@ -1,5 +1,5 @@
 <html>
-<head> <title> Award Certifications Page </title>
+<head> <title> Renew Certifications Page </title>
 
 </head>
 <body>
@@ -55,91 +55,94 @@
 
 <br>
 
-<div id="memberCertificationsTable" class="container">
-
-  <div class="filter">
-    <select class="custom-select" v-model="filter.certificationName">
-      <option value="">(all)</option>
-      <option v-for="m in memberCertificates">{{ m.certificationName }}</option>
-    </select>
-  </div>
-  <br>
+<div id="expiredCertificationsApp" class="container">
 
   <table class="table table-hover">
     <thead class="thead-dark">
       <tr>
-        <th>Member ID</th>
+        <th>Member Certification</th>
         <th>First Name</th>
         <th>Last Name</th>
-        <th>Certification ID</th>
         <th>Certification Name</th>
-        <th>Certifying Agency</th>
-        <th>Certification Received</th>
+        <th>Date Received</th>
+        <th>Date Expired</th>
       </tr>
     </thead>
     <tbody>
-      <tr v-for="m in memberCertificates" v-if="filter.certificationName == '' || filter.certificationName == m.certificationName">
-        <td>{{ m.memberID }}</td>
-        <td>{{ m.firstName }}</td>
-        <td>{{ m.lastName }}</td>
-        <td>{{ m.certificationID }}</td>
-        <td>{{ m.certificationName }}</td>
-        <td>{{ m.certifyingAgency }}</td>
-        <td>{{ m.certificationRecieved }}</td>
+      <tr v-for="e in expiredCertifications" @click="handleRowClick(e)">
+        <td>{{ e.memberCertification }}
+        <td>{{ e.firstName }}</td>
+        <td>{{ e.lastName }}</td>
+        <td>{{ e.cName }}</td>
+        <td>{{ e.dateReceived }}</td>
+        <td>{{ e.dateExpired }}</td>
       </tr>
     </tbody>
   </table>
-</div>
 
-<!-- Dynamic Dropdown completed with assistance from: https://stackoverflow.com/questions/43193721/vue-js-dynamic-dropdown -->
-<div id="updateMemberCertificationsTableApp" class="container">
-
-  <!-- <select class="custom-select" v-model="memberCertificates.memberCertification">
-    <option value="">71</option>
-  </select> -->
-
-  <!-- memberCertification -->
-    <label for="memberID" class="col-sm-2 col-form-label">Member Certification</label>
-    <div class="col-sm-10">
-      <input type="string" class="form-control" id="memberID" placeholder="15" v-model="memberCertificate.memberCertification" readonly>
-    </div>
-
-  <!-- Dropdown for Members -->
-  <select class="custom-select" v-model="memberCertificate.memberID">
-    <option disabled value="">Select a Member</option>
-    <option v-for="m in members">{{ m.memberID }} - {{ m.firstName }} {{ m.lastName }}</option>
-  </select>
-  <!-- Dropdown for Existing Certifications -->
-  <select class="custom-select" v-model="memberCertificate.certificationID">
-    <option disabled value="">Select a Certification</option>
-    <option v-for="c in certificates">{{ c.certificationID}} - {{ c.certificationName }} / {{ c.certifyingAgency }}</option>
-  </select>
-  <!-- Date Certification Received -->
-  <div class="form-group row">
-    <label for="certificationReceived" class="col-sm-2 col-form-label">Certification Received</label>
-    <div class="col-sm-10">
-      <input type="string" class="form-control" id="certificationReceived" placeholder="2019-10-27" v-model="memberCertificate.certificationReceived">
-    </div>
   </div>
 
-  <div class="container">
+  <div id="updateExpiredCertificationsApp" class="container">
 
-    <div class="row">
-      <div class="col-12">
-        <button type="submit" class="btn btn-success btn-block" @click="handleSubmit">Award Certification</button>
+    <form>
+
+      <div class="form-group row">
+        <label for="memberID" class="col-sm-2 col-form-label">Member Certification</label>
+        <div class="col-sm-10">
+          <input type="string" class="form-control" id="memberCertification" placeholder="20" v-model="expiredCertification.memberCertification" readonly>
+        </div>
       </div>
+      <div class="form-group row">
+        <label for="memberID" class="col-sm-2 col-form-label">First Name</label>
+        <div class="col-sm-10">
+          <input type="string" class="form-control" id="firstName" placeholder="Anson" v-model="expiredCertification.firstName" readonly>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="memberID" class="col-sm-2 col-form-label">Last Name</label>
+        <div class="col-sm-10">
+          <input type="string" class="form-control" id="lastName" placeholder="Lam" v-model="expiredCertification.lastName" readonly>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="memberID" class="col-sm-2 col-form-label">Certification Name</label>
+        <div class="col-sm-10">
+          <input type="string" class="form-control" id="certificationName" placeholder="SCUBA" v-model="expiredCertification.cName" readonly>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="memberID" class="col-sm-2 col-form-label">Date Expired</label>
+        <div class="col-sm-10">
+          <input type="string" class="form-control" id="dateExpired" placeholder="Indiana University" v-model="expiredCertification.dateExpired" readonly>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="memberID" class="col-sm-2 col-form-label">Date Renewed</label>
+        <div class="col-sm-10">
+          <input type="string" class="form-control" id="extension" placeholder="2019-10-27" v-model="expiredCertification.dataReceived">
+        </div>
+      </div>
+
+    </form>
+
+    <div class="container">
+
+      <div class="row">
+        <div class="col-12">
+          <button type="submit" class="btn btn-success btn-block" @click="handleUpdate">Renew Certification</button>
+        </div>
+      </div>
+
     </div>
 
-  </div>
-
-  </div>
+    </div>
 
 
 <br>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="js/memberCertificationsTable.app.js"></script>
-<script src="js/updateMemberCertificationsTable.app.js"></script>
+<script src="js/expiredCertifications.app.js"></script>
+<script src="js/updateExpiredCertifications.app.js"></script>
 
 </body>
 </body>

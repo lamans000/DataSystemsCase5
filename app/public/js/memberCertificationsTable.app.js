@@ -7,7 +7,7 @@ var memberCertificationsTable = new Vue({
     }
   },
   methods: {
-    fetchMembers() {
+    fetchmemberCertifications() {
       fetch('api/memberCertificates/')
       .then(response => response.json())
       .then(json => { memberCertificationsTable.memberCertificates = json })
@@ -17,6 +17,6 @@ var memberCertificationsTable = new Vue({
     }
   },
   created() {
-    this.fetchMembers();
+    this.fetchmemberCertifications();
   }
 })

@@ -27,8 +27,17 @@
       <li class="nav-item active">
         <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="certification.html">Certifications</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Certifications
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="certification.html">Modify Certifications</a>
+          <a class="dropdown-item" href="awardCertification.html">Award Certifications to Members</a>
+          <a class="dropdown-item" href="renewCertification.html">Renew Certifications for Members</a>
+          <a class="dropdown-item" href="revokeCertification.html">Revoke Certifications from Members</a>
+          <div class="dropdown-divider"></div>
+        </div>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="members.html">Members</a>
@@ -99,13 +108,16 @@
 <div class="container">
 
   <div class="row">
-    <div class="col-12 col-sm-4">
+    <div class="col-12 col-sm-3">
+      <button type="submit" class="btn btn-dark btn-block" @click="handleReset">Clear Form</button>
+    </div>
+    <div class="col-12 col-sm-3">
       <button type="submit" class="btn btn-success btn-block" @click="handleSubmit">Add Certification</button>
     </div>
-    <div class="col-12 col-sm-4">
+    <div class="col-12 col-sm-3">
       <button type="submit" class="btn btn-primary btn-block" @click="handleUpdate">Update Certification</button>
     </div>
-    <div class="col-12 col-sm-4">
+    <div class="col-12 col-sm-3">
       <button type="submit" class="btn btn-danger btn-block" @click="handleDelete">Delete Certification</button>
     </div>
   </div>
@@ -113,98 +125,6 @@
 </div>
 
 </div>
-
-<br>
-
-<div id="memberCertificationsTable" class="container">
-
-  <div class="filter">
-    <select class="custom-select" v-model="filter.certificationName">
-      <option value="">(all)</option>
-      <option>CPR</option>
-      <option>Firefighter I</option>
-      <option>Firefighter II</option>
-      <option>Firefighter III</option>
-      <option>Firefighter IV</option>
-      <option>POST</option>
-      <option>HAZMAT</option>
-      <option>Extrication</option>
-      <option>EMT-Adv</option>
-      <option>Due Regard</option>
-      <option>Paramedic</option>
-    </select>
-  </div>
-  <br>
-
-  <table class="table table-hover">
-    <thead class="thead-dark">
-      <tr>
-        <th>Member ID</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Certification ID</th>
-        <th>Certification Name</th>
-        <th>Certifying Agency</th>
-        <th>Certification Received</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="m in memberCertificates" @click="handleRowClick(m)" v-if="filter.certificationName == '' || filter.certificationName == m.certificationName">
-        <td>{{ m.memberID }}</td>
-        <td>{{ m.firstName }}</td>
-        <td>{{ m.lastName }}</td>
-        <td>{{ m.certificationID }}</td>
-        <td>{{ m.certificationName }}</td>
-        <td>{{ m.certifyingAgency }}</td>
-        <td>{{ m.certificationRecieved }}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- Dynamic Dropdown completed with assistance from: https://stackoverflow.com/questions/43193721/vue-js-dynamic-dropdown -->
-<div id="updateMemberCertificationsTableApp" class="container">
-
-  <!-- <select class="custom-select" v-model="memberCertificates.memberCertification">
-    <option value="">71</option>
-  </select> -->
-
-  <!-- memberCertification -->
-    <label for="memberID" class="col-sm-2 col-form-label">Member Certification</label>
-    <div class="col-sm-10">
-      <input type="string" class="form-control" id="memberID" placeholder="15" v-model="memberCertificate.memberCertification" readonly>
-    </div>
-
-  <!-- Dropdown for Members -->
-  <select class="custom-select" v-model="memberCertificate.memberID">
-    <option disabled value="">Select a Member</option>
-    <option v-for="m in members">{{ m.memberID }} - {{ m.firstName }} {{ m.lastName }}</option>
-  </select>
-  <!-- Dropdown for Existing Certifications -->
-  <select class="custom-select" v-model="memberCertificate.certificationID">
-    <option disabled value="">Select a Certification</option>
-    <option v-for="c in certificates">{{ c.certificationID}} - {{ c.certificationName }} / {{ c.certifyingAgency }}</option>
-  </select>
-  <!-- Date Certification Received -->
-  <div class="form-group row">
-    <label for="certificationReceived" class="col-sm-2 col-form-label">Certification Received</label>
-    <div class="col-sm-10">
-      <input type="string" class="form-control" id="certificationReceived" placeholder="2019-10-27" v-model="memberCertificate.certificationReceived">
-    </div>
-  </div>
-
-  <div class="container">
-
-    <div class="row">
-      <div class="col-12 col-sm-4">
-        <button type="submit" class="btn btn-success btn-block" @click="handleSubmit">Award Certification</button>
-      </div>
-    </div>
-
-  </div>
-
-  </div>
-
 
 <br>
 
