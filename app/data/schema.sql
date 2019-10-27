@@ -52,24 +52,25 @@ CREATE TABLE MemberCertifications(
 memberCertification INTEGER AUTO_INCREMENT PRIMARY KEY,
 memberID INTEGER,
 certificationID INTEGER,
+certificationRecieved DATE,
 FOREIGN KEY (memberID) references Member(memberID),
 FOREIGN KEY (certificationID) references Certifications(certificationID)
- );
+ON DELETE CASCADE
+);
 
-INSERT INTO MemberCertifications (memberID, certificationID) VALUES
-("1","5"),
-("1","1"),
-("1","7"),
-("1","8"),
-("2","9"),
-("2","1"),
-("2","10"),
-("3","11"),
-("3","2"),
-("3","10"),
-("3","11"),
-("3","3")
-;
+INSERT INTO MemberCertifications (memberID, certificationID,certificationRecieved) VALUES
+("1","5","1990-11-20"),
+("1","1","1990-11-20"),
+("1","7","1990-11-20"),
+("1","8","1990-11-20"),
+("2","9","2000-11-30"),
+("2","1","2000-11-30"),
+("2","10","2000-11-30"),
+("3","11", "2000-02-02"),
+("3","2","2000-02-02"),
+("3","10","2000-02-02"),
+("3","11","2000-02-02"),
+("3","3","2000-02-02");
 
 -- Give a member a new certification
 INSERT INTO MemberCertifications (memberID, certificationID, certificationRecieved) VALUES ("6","13","2019-10-25");
