@@ -1,6 +1,7 @@
 Create database ocfr;
 USE ocfr;
 
+
 CREATE TABLE Member (
     memberID INTEGER AUTO_INCREMENT PRIMARY KEY,
     firstName VARCHAR(64) NOT NULL,
@@ -22,9 +23,9 @@ CREATE TABLE Member (
 );
 
 INSERT INTO Member (firstName, lastName, dob, gender, startDate, street, city, state, zip, email, workPhoneNumber, mobilePhoneNumber, jobTitle, radioNumber, stationNumber, isActive) VALUES
-("Kathyrn","Pryde",'',"Female",'',"1123 Xavier School Drive","Watkinsville", "GA", "30677",'', "707-555-1234", "707-555-2345", "Chief", "A-1",'',""),
-("Piotr","Rasputin",'',"Male",'',"A31 Mother Russia Road","Seattle", "WA", "98133",'','', "206-555-9876",'', "841","8",''),
-("Warren","Worthington III",'',"Male",'',"1140 Experiment Station Rd","Watkinsville", "GA",'','', "706-555-3945",'','', "122","1",'')
+("Kathyrn","Pryde",'1960-11-12',"Female",'1990-11-20',"1123 Xavier School Drive","Watkinsville", "GA", "30677",'', "707-555-1234", "707-555-2345", "Chief", "A-1",'',""),
+("Piotr","Rasputin",'1980-11-12',"Male",'2000-11-30',"A31 Mother Russia Road","Seattle", "WA", "98133",'','', "206-555-9876",'', "841","8",''),
+("Warren","Worthington III",'1990-11-12',"Male",'2000-02-02',"1140 Experiment Station Rd","Watkinsville", "GA",'','', "706-555-3945",'','', "122","1",'')
 ;
 
 CREATE TABLE Certifications (
@@ -53,7 +54,8 @@ memberCertification INTEGER AUTO_INCREMENT PRIMARY KEY,
 memberID INTEGER,
 certificationID INTEGER,
 certificationRecieved DATE,
-FOREIGN KEY (memberID) references Member(memberID),
+FOREIGN KEY (memberID) references Member(memberID)
+ON DELETE CASCADE,
 FOREIGN KEY (certificationID) references Certifications(certificationID)
 ON DELETE CASCADE
 );
@@ -70,7 +72,8 @@ INSERT INTO MemberCertifications (memberID, certificationID,certificationRecieve
 ("3","2","2000-02-02"),
 ("3","10","2000-02-02"),
 ("3","11","2000-02-02"),
-("3","3","2000-02-02");
+("3","3","2000-02-02")
+;
 
 -- Give a member a new certification
 INSERT INTO MemberCertifications (memberID, certificationID, certificationRecieved) VALUES ("6","13","2019-10-25");

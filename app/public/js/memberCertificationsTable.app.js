@@ -7,16 +7,16 @@ var memberCertificationsTable = new Vue({
     }
   },
   methods: {
-    fetchMembers() {
+    fetchmemberCertifications() {
       fetch('api/memberCertificates/')
       .then(response => response.json())
       .then(json => { memberCertificationsTable.memberCertificates = json })
+    },
+    handleRowClick(memberCertificate) {
+      updateMemberCertificationsTableApp.memberCertificate = memberCertificate;
     }
-    // handleRowClick(certificate) {
-    //   updateCertificateApp.memberCertificate = certificate;
-    // }
   },
   created() {
-    this.fetchMembers();
+    this.fetchmemberCertifications();
   }
 })

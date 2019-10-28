@@ -1,0 +1,111 @@
+<html>
+<head> <title> Expired Certifications Report </title>
+
+</head>
+<body>
+  <!--Compiled and minified CSS-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!--jQuery CDN-->
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+
+  <!--Compiled and minified JavaScript-->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="css/main.css" rel="stylesheet">
+  <body>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="css/main.css" rel="stylesheet">
+
+<!-- Navbar provided by Bootstrap -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="index.html"><h2>OCFR</h2></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Certifications
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="certification.html">Modify Certifications</a>
+          <a class="dropdown-item" href="awardCertification.html">Award Certifications to Members</a>
+          <a class="dropdown-item" href="renewCertification.html">Renew Certifications for Members</a>
+          <a class="dropdown-item" href="revokeCertification.html">Revoke Certifications from Members</a>
+          <div class="dropdown-divider"></div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="members.html">Members</a>
+      </li>
+      <li class="nav-item dropdown active">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Reports
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="expiredCertifications.html">Members with Expired Certifications</a>
+          <a class="dropdown-item" href="membersStation.html">Members by Station</a>
+          <a class="dropdown-item" href="membersRadio.html">Members by Radio Number</a>
+        </div>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+<br>
+
+<div id="expiredCertificationsApp" class="container">
+
+  <!-- Jumbotron and table elements provided by Bootstrap -->
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">All Members with Expired Certifications</h1>
+    <h4>Want to Renew a Certification? Head to the <a href="renewCertification.html" class="alert-link">Renew Certifications page</a> for more info</h4>
+  </div>
+</div>
+
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>Member Certification</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Certification Name</th>
+        <th>Date Received</th>
+        <th>Date Expired</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="e in expiredCertifications">
+        <td>{{ e.memberCertification }}
+        <td>{{ e.firstName }}</td>
+        <td>{{ e.lastName }}</td>
+        <td>{{ e.cName }}</td>
+        <td>{{ e.certificationRecieved }}</td>
+        <td>{{ e.dateExpired }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button onclick="exportTableToCSV('members_expiredCertifications.csv')">Download as CSV</button>
+
+  </div>
+
+<br>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/expiredCertifications.app.js"></script>
+<script src="js/exportTableToCSV.app.js"></script>
+
+</body>
+</body>
+</html>

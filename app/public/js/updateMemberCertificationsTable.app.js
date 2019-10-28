@@ -3,7 +3,7 @@ var updateMemberCertificationsTableApp = new Vue({
   data: {
     members: [],
     certificates: {},
-    memberCertificates: []
+    memberCertificate: {}
   },
   methods: {
     fetchMembers() {
@@ -20,11 +20,33 @@ var updateMemberCertificationsTableApp = new Vue({
       fetch('api/memberCertificates/post.php',
       {
         method:'POST',
-        body: JSON.stringify(this.memberCertificates),
+        body: JSON.stringify(this.memberCertificate),
         headers: {
           "Content-Type": "application/json; charset=utf-8"
         }
       })
+      this.handleReset();
+      location.reload(true);
+    },
+    handleDelete() {
+      fetch('api/memberCertificates/delete.php',
+      {
+        method:'POST',
+        body: JSON.stringify(this.memberCertificate),
+        headers: {
+          "Content-Type": "application/json; charset=utf-8"
+        }
+      })
+      this.handleReset();
+      location.reload(true);
+    },
+    handleReset() {
+      this.memberCertificate = {
+      memberCertification: '',
+      memberID: '',
+      certificationID: '',
+      certificationReceived:''
+      }
     }
   },
   created() {
