@@ -1,7 +1,11 @@
 var memberTableApp = new Vue({
   el: '#memberTableApp',
   data: {
-    members: []
+    members: [],
+    filter: {
+      stationNumber: '',
+      radioNumber: ''
+    }
   },
   methods: {
     fetchMembers() {

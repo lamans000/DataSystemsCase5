@@ -44,8 +44,14 @@
       <li class="nav-item">
         <a class="nav-link" href="members.html">Members</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="reports.html">Reports</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Reports
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="expiredCertifications.html">Members with Expired Certifications</a>
+          <a class="dropdown-item" href="membersStationRadio.html">Members by Station & Radio Number</a>
+        </div>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -195,13 +201,13 @@
   <div class="form-group row">
     <label for="inputradioNumber" class="col-sm-2 col-form-label">Radio Number</label>
     <div class="col-sm-10">
-      <input type="string" class="form-control" id="radioNumber" placeholder="100000" v-model="member.radioNumber">
+      <input type="string" class="form-control" id="radioNumber" placeholder="10" v-model="member.radioNumber">
     </div>
   </div>
   <div class="form-group row">
     <label for="inputstationNumber" class="col-sm-2 col-form-label">Station Number</label>
     <div class="col-sm-10">
-      <input type="integer" class="form-control" id="stationNumber" placeholder="999999" v-model="member.stationNumber">
+      <input type="integer" class="form-control" id="stationNumber" placeholder="20" v-model="member.stationNumber">
     </div>
   </div>
 

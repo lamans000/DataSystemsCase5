@@ -1,5 +1,5 @@
 <html>
-<head> <title> Renew Certifications Page </title>
+<head> <title> Award Certifications Page </title>
 
 </head>
 <body>
@@ -61,94 +61,124 @@
 
 <br>
 
-<div id="expiredCertificationsApp" class="container">
+<div id="memberTableApp" class="container">
+
+  <div class="filter">
+    <select class="custom-select" v-model="filter.stationNumber">
+      <option value="">(all)</option>
+      <option v-for="m in members">{{ m.stationNumber }}</option>
+    </select>
+  </div>
+
+  <br>
 
   <table class="table table-hover">
     <thead class="thead-dark">
       <tr>
-        <th>Member Certification</th>
+        <th>Member ID</th>
         <th>First Name</th>
         <th>Last Name</th>
-        <th>Certification Name</th>
-        <th>Date Received</th>
-        <th>Date Expired</th>
+        <th>Gender</th>
+        <th>Job Title</th>
+        <th>Start Date</th>
+        <th>Date of Birth</th>
+        <th>Street</th>
+        <th>City</th>
+        <th>State</th>
+        <th>ZIP</th>
+        <th>Email</th>
+        <th>Work Phone Number</th>
+        <th>Mobile Phone Number</th>
+        <th>Radio Number</th>
+        <th>Station Number</th>
+        <th>Is Active?</th>
       </tr>
     </thead>
     <tbody>
-      <tr v-for="e in expiredCertifications" @click="handleRowClick(e)">
-        <td>{{ e.memberCertification }}
-        <td>{{ e.firstName }}</td>
-        <td>{{ e.lastName }}</td>
-        <td>{{ e.cName }}</td>
-        <td>{{ e.certificationRecieved }}</td>
-        <td>{{ e.dateExpired }}</td>
+      <tr v-for="m in members" v-if="filter.stationNumber == '' || filter.stationNumber == m.stationNumber">
+        <td>{{ m.memberID }}</td>
+        <td>{{ m.firstName }}</td>
+        <td>{{ m.lastName }}</td>
+        <td>{{ m.gender }}</td>
+        <td>{{ m.jobTitle }}</td>
+        <td>{{ m.startDate }}</td>
+        <td>{{ m.dob }}</td>
+        <td>{{ m.street }}</td>
+        <td>{{ m.city }}</td>
+        <td>{{ m.state }}</td>
+        <td>{{ m.zip }}</td>
+        <td>{{ m.email }}</td>
+        <td>{{ m.workPhoneNumber }}</td>
+        <td>{{ m.mobilePhoneNumber }}</td>
+        <td>{{ m.radioNumber }}</td>
+        <td>{{ m.stationNumber }}</td>
+        <td>{{ m.isActive }}</td>
       </tr>
     </tbody>
   </table>
 
+  <br>
+
+  <div class="filter">
+    <select class="custom-select" v-model="filter.radioNumber">
+      <option value="">(all)</option>
+      <option v-for="m in members">{{ m.radioNumber }}</option>
+    </select>
   </div>
 
-  <div id="updateExpiredCertificationsApp" class="container">
+  <br>
 
-    <form>
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>Member ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Gender</th>
+        <th>Job Title</th>
+        <th>Start Date</th>
+        <th>Date of Birth</th>
+        <th>Street</th>
+        <th>City</th>
+        <th>State</th>
+        <th>ZIP</th>
+        <th>Email</th>
+        <th>Work Phone Number</th>
+        <th>Mobile Phone Number</th>
+        <th>Radio Number</th>
+        <th>Station Number</th>
+        <th>Is Active?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="m in members" v-if="filter.radioNumber == '' || filter.radioNumber == m.radioNumber">
+        <td>{{ m.memberID }}</td>
+        <td>{{ m.firstName }}</td>
+        <td>{{ m.lastName }}</td>
+        <td>{{ m.gender }}</td>
+        <td>{{ m.jobTitle }}</td>
+        <td>{{ m.startDate }}</td>
+        <td>{{ m.dob }}</td>
+        <td>{{ m.street }}</td>
+        <td>{{ m.city }}</td>
+        <td>{{ m.state }}</td>
+        <td>{{ m.zip }}</td>
+        <td>{{ m.email }}</td>
+        <td>{{ m.workPhoneNumber }}</td>
+        <td>{{ m.mobilePhoneNumber }}</td>
+        <td>{{ m.radioNumber }}</td>
+        <td>{{ m.stationNumber }}</td>
+        <td>{{ m.isActive }}</td>
+      </tr>
+    </tbody>
+  </table>
 
-      <div class="form-group row">
-        <label for="memberID" class="col-sm-2 col-form-label">Member Certification</label>
-        <div class="col-sm-10">
-          <input type="string" class="form-control" id="memberCertification" placeholder="20" v-model="expiredCertification.memberCertification" readonly>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="memberID" class="col-sm-2 col-form-label">First Name</label>
-        <div class="col-sm-10">
-          <input type="string" class="form-control" id="firstName" placeholder="Anson" v-model="expiredCertification.firstName" readonly>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="memberID" class="col-sm-2 col-form-label">Last Name</label>
-        <div class="col-sm-10">
-          <input type="string" class="form-control" id="lastName" placeholder="Lam" v-model="expiredCertification.lastName" readonly>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="memberID" class="col-sm-2 col-form-label">Certification Name</label>
-        <div class="col-sm-10">
-          <input type="string" class="form-control" id="certificationName" placeholder="SCUBA" v-model="expiredCertification.cName" readonly>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="memberID" class="col-sm-2 col-form-label">Date Expired</label>
-        <div class="col-sm-10">
-          <input type="string" class="form-control" id="dateExpired" placeholder="Indiana University" v-model="expiredCertification.dateExpired" readonly>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="memberID" class="col-sm-2 col-form-label">Date Renewed</label>
-        <div class="col-sm-10">
-          <input type="string" class="form-control" id="extension" placeholder="2019-10-27" v-model="expiredCertification.certificationRecieved">
-        </div>
-      </div>
-
-    </form>
-
-    <div class="container">
-
-      <div class="row">
-        <div class="col-12">
-          <button type="submit" class="btn btn-success btn-block" @click="handleUpdate">Renew Certification</button>
-        </div>
-      </div>
-
-    </div>
-
-    </div>
-
+</div>
 
 <br>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="js/expiredCertifications.app.js"></script>
-<script src="js/updateExpiredCertifications.app.js"></script>
+<script src="js/memberTable.app.js"></script>
 
 </body>
 </body>
