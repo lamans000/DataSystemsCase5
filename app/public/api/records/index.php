@@ -10,9 +10,7 @@ if (isset($_GET['guid'])) {
   );
   $stmt->execute([$_GET['memberID']]);
 } else {
-  $stmt = $db->prepare('SELECT m.memberID, m.firstName,m.lastName,m.dob,m.gender,m.startDate,m.street,m.city,m.state,m.zip,m.email,m.workPhoneNumber,m.mobilePhoneNumber,m.jobTitle,m.radioNumber,m.stationNumber,m.isActive,c.certificationName
-  FROM Member as m, Certifications as c, MemberCertifications as mc
-  WHERE m.memberID = mc.memberID AND c.certificationID = mc.certificationID;');
+  $stmt = $db->prepare('SELECT * FROM Member');
   $stmt->execute();
 }
 $members = $stmt->fetchAll();
