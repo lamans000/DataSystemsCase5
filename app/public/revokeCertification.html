@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="css/main.css" rel="stylesheet">
 
+<!-- Navbar provided by Bootstrap -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="index.html"><h2>OCFR</h2></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,8 +63,18 @@
 
 <br>
 
+<!-- Show all certifications held by members -->
 <div id="memberCertificationsTable" class="container">
 
+  <!-- Jumbotron and table elements provided by Bootstrap -->
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Revoke Member Certifications</h1>
+      <p class="lead">View all certifications held by members with the option to revoke</p>
+    </div>
+  </div>
+
+  <h3>Filter by Certification:</h3>
   <div class="filter">
     <select class="custom-select" v-model="filter.certificationName">
       <option value="">(all)</option>
@@ -100,7 +111,13 @@
   </table>
 </div>
 
+<!-- Form to remove certifications from members -->
 <div id="updateMemberCertificationsTableApp" class="container">
+
+  <div class="alert alert-success" role="alert">
+    <h1 class="alert-heading">Revoke a Member's Certification</h1>
+    <h4>Want to completely remove a certification and all members who hold it? Refer to the <a href="certification.html" class="alert-link">Modify Certifications page</a> to make those changes</h4>
+  </div>
 
   <form>
 
