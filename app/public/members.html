@@ -63,8 +63,15 @@
 </nav>
 
 <!-- Show all fields from members table -->
-<div class="container">
-<div id="memberTableApp">
+<div class="container" id="memberTableApp">
+
+    <!-- Jumbotron and table elements provided by Bootstrap -->
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">All Members</h1>
+      <p class="lead">View all members current and past</p>
+    </div>
+  </div>
 
   <br>
 
@@ -114,12 +121,16 @@
   </table>
 </div>
 
-<div id="updateMemberApp">
+<div class="container" id="updateMemberApp">
+  <div class="alert alert-success" role="alert">
+    <h1 class="alert-heading">Modify a Member's Details</h1>
+    <h4>Edit mistakes, remove members, or update a member's information here</h4>
+  </div>
 <form @submit.prevent="handleUpdate">
   <div class="form-group row">
     <label for="memberID" class="col-sm-2 col-form-label">MemberID</label>
     <div class="col-sm-10">
-      <input type="string" class="form-control" id="memberID" placeholder="000" v-model="member.memberID" readonly>
+      <input type="string" class="form-control" id="<memb></memb>erID" placeholder="000" v-model="member.memberID" readonly>
     </div>
   </div>
   <div class="form-group row">
