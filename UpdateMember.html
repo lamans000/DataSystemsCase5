@@ -1,0 +1,222 @@
+<html>
+<head> <title> Update Members Page </title>
+
+</head>
+<body>
+  <!--Compiled and minified CSS-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!--jQuery CDN-->
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+
+  <!--Compiled and minified JavaScript-->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="css/main.css" rel="stylesheet">
+  <body>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="css/main.css" rel="stylesheet">
+
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="index.html"><h2>OCFR</h2></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="certification.html">Certifications</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="modifyMember.html">Modify Members</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="members.html">Members</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="reports.html">Reports</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+<div id="memberTableApp">
+
+  <br>
+
+  <table class="table table-sm table-hover">
+    <thead>
+      <tr>
+        <th>memberID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Date of Birth</th>
+        <th>Gender</th>
+        <th>Start Date</th>
+        <th>Street</th>
+        <th>City</th>
+        <th>State</th>
+        <th>ZIP</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="m in members" @click="handleRowClick(m)">
+        <td>{{ m.memberID }}</td>
+        <td>{{ m.firstName }}</td>
+        <td>{{ m.lastName }}</td>
+        <td>{{ m.dob }}</td>
+        <td>{{ m.gender }}</td>
+        <td>{{ m.startDate }}</td>
+        <td>{{ m.street }}</td>
+        <td>{{ m.city }}</td>
+        <td>{{ m.state }}</td>
+        <td>{{ m.zip }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<div id="insertMemberApp">
+<form>
+  <div class="form-group row">
+    <label for="inputfirstName" class="col-sm-2 col-form-label">First Name</label>
+    <div class="col-sm-10">
+      <input type="string" class="form-control" id="firstName" placeholder="John" required>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputlastName" class="col-sm-2 col-form-label">Last Name</label>
+    <div class="col-sm-10">
+      <input type="string" class="form-control" id="lastName" placeholder="Doe" required>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="example-datetime-local-input" class="col-2 col-form-label">Date of Birth</label>
+    <div class="col-10">
+      <input class="form-control" type="datetime-local" value="1996-08-19" id="dateofBirth" required>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputGender" class="col-sm-2 col-form-label">Gender</label>
+    <div class="col-sm-10">
+      <input type="string" class="form-control" id="gender" placeholder="M | F">
+    </div>
+  </div>
+  <div class="form-group row">
+  <label for="example-datetime-local-input" class="col-2 col-form-label">Start Date</label>
+  <div class="col-10">
+    <input class="form-control" type="date" value="1996-08-19" id="dateofBirth">
+  </div>
+  <div class="form-group row">
+    <label for="inputAddress" class="col-sm-2 col-form-label">City</label>
+    <div class="col-sm-10">
+      <input type="string" class="form-control" id="address" placeholder="Oconee" required>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputAddress" class="col-sm-2 col-form-label">State</label>
+    <div class="col-sm-10">
+      <input type="string" class="form-control" id="address" placeholder="GA" required>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputAddress" class="col-sm-2 col-form-label">Zip</label>
+    <div class="col-sm-10">
+      <input type="string" class="form-control" id="address" placeholder="30677" required>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputEmail" class="col-sm-2 col-form-label">Email Address</label>
+    <div class="col-sm-10">
+      <input type="string" class="form-control" id="email" placeholder="johndoe@gmail.com" required>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputPhoneNumber" class="col-sm-2 col-form-label">Work Phone Number</label>
+    <div class="col-sm-10">
+      <input type="tel" class="form-control" id="phone" pattern="^\d{3}-\d{3}-\d{4}$" placeholder="706-769-3975" required>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputPhoneNumber" class="col-sm-2 col-form-label">Mobile Phone Number</label>
+    <div class="col-sm-10">
+      <input type="tel" class="form-control" id="phone" pattern="^\d{3}-\d{3}-\d{4}$" placeholder="812-123-4567" required>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label" for="inlineFormCustomSelectPref">Position</label>
+    <div class="col-sm-10">
+      <select class="custom-select my-1 mr-sm-2" id="jobTitle">
+        <option selected>Choose...</option>
+        <option value="juniorFirefighter">Junior Firefighter</option>
+        <option value="seniorFirefighter">Senior Firefighter</option>
+        <option value="battalionChief">Battalion Chief</option>
+        <option value="captain">Captain</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group row">
+  <label for="example-datetime-local-input" class="col-2 col-form-label">Start Date</label>
+  <div class="col-10">
+    <input class="form-control" type="date" value="2016-10-19" id="startDate">
+  </div>
+</div>
+  <div class="form-group row">
+    <label for="inputradioNumber" class="col-sm-2 col-form-label">Radio Number</label>
+    <div class="col-sm-10">
+      <input type="string" class="form-control" id="radioNumber" placeholder="100000">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputstationNumber" class="col-sm-2 col-form-label">Station Number</label>
+    <div class="col-sm-10">
+      <input type="integer" class="form-control" id="stationNumber" placeholder="999999">
+    </div>
+  </div>
+  <!-- <fieldset class="form-group">
+    <div class="row">
+      <legend class="col-form-label col-sm-2 pt-0">Active?</legend>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <input type="radio" name="gridRadios" id="gridRadios1" value="active">
+          <label for="gridRadios1">
+            Yes
+          </label>
+        </div>
+        <div class="form-check">
+          <input type="radio" name="gridRadios" id="gridRadios2" value="inactive">
+          <label for="gridRadios2">
+            No
+          </label>
+        </div>
+      </div>
+    </div>
+  </fieldset> -->
+
+  <div class="form-group row">
+    <div class="col-sm-4">
+      <button type="submit" class="btn btn-primary">Update Member</button>
+    </div>
+
+  </div>
+</form>
+</div>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/memberTable.app.js"></script>
+<script src="js/updateMember.app.js"></script>
+
+</body>
+</html>
