@@ -212,6 +212,12 @@
     </div>
   </div>
 
+  <select class="custom-select" v-model="member.isActive">
+    <option disabled value="">Member Status</option>
+    <option value="Active">Active</option>
+    <option value="Inactive">Inactive</option>
+  </select>
+
   <!-- <fieldset class="form-group">
     <div class="row">
       <legend class="col-form-label col-sm-2 pt-0">Active?</legend>

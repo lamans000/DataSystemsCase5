@@ -2,7 +2,7 @@
 
 $db = DbConnection::getConnection();
 
-$stmt = $db->prepare('UPDATE Member SET firstName = ?, lastName = ?, gender = ?, jobTitle = ?, startDate = ?, dob = ?, street = ?, city = ?, state = ?, zip = ?, email = ?, workPhoneNumber = ?, mobilePhoneNumber = ?, radioNumber = ?, stationNumber = ? WHERE memberID = ?');
+$stmt = $db->prepare('UPDATE Member SET firstName = ?, lastName = ?, gender = ?, jobTitle = ?, startDate = ?, dob = ?, street = ?, city = ?, state = ?, zip = ?, email = ?, workPhoneNumber = ?, mobilePhoneNumber = ?, radioNumber = ?, stationNumber = ?, isActive = ? WHERE memberID = ?');
 
 $stmt->execute([
   $_POST['firstName'],
@@ -20,5 +20,6 @@ $stmt->execute([
   $_POST['mobilePhoneNumber'],
   $_POST['radioNumber'],
   $_POST['stationNumber'],
+  $_POST['isActive'],
   $_POST['memberID']
 ]);

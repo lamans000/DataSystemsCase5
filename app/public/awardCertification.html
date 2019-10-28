@@ -101,16 +101,11 @@
 <!-- Dynamic Dropdown completed with assistance from: https://stackoverflow.com/questions/43193721/vue-js-dynamic-dropdown -->
 <div id="updateMemberCertificationsTableApp" class="container">
 
-  <!-- <select class="custom-select" v-model="memberCertificates.memberCertification">
-    <option value="">71</option>
-  </select> -->
-
   <!-- memberCertification -->
     <label for="memberID" class="col-sm-2 col-form-label">Member Certification</label>
     <div class="col-sm-10">
       <input type="string" class="form-control" id="memberID" placeholder="15" v-model="memberCertificate.memberCertification" readonly>
     </div>
-
   <!-- Dropdown for Members -->
   <select class="custom-select" v-model="memberCertificate.memberID">
     <option disabled value="">Select a Member</option>
@@ -128,18 +123,15 @@
       <input type="string" class="form-control" id="certificationReceived" placeholder="2019-10-27" v-model="memberCertificate.certificationReceived">
     </div>
   </div>
-
+  <!-- Award Certification Button -->
   <div class="container">
-
     <div class="row">
       <div class="col-12">
         <button type="submit" class="btn btn-success btn-block" @click="handleSubmit">Award Certification</button>
       </div>
     </div>
-
   </div>
-
-  </div>
+</div>
 
 
 <br>
