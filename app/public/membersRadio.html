@@ -1,0 +1,133 @@
+<html>
+<head> <title> Members by Station Number Report Page </title>
+
+</head>
+<body>
+  <!--Compiled and minified CSS-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!--jQuery CDN-->
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+
+  <!--Compiled and minified JavaScript-->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="css/main.css" rel="stylesheet">
+  <body>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="css/main.css" rel="stylesheet">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="index.html"><h2>OCFR</h2></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Certifications
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="certification.html">Modify Certifications</a>
+          <a class="dropdown-item" href="awardCertification.html">Award Certifications to Members</a>
+          <a class="dropdown-item" href="renewCertification.html">Renew Certifications for Members</a>
+          <a class="dropdown-item" href="revokeCertification.html">Revoke Certifications from Members</a>
+          <div class="dropdown-divider"></div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="members.html">Members</a>
+      </li>
+      <li class="nav-item dropdown active">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Reports
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="expiredCertifications.html">Members with Expired Certifications</a>
+          <a class="dropdown-item" href="membersStation.html">Members by Station</a>
+          <a class="dropdown-item" href="membersRadio.html">Members by Radio Number</a>
+        </div>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+<br>
+
+<div id="memberTableApp" class="container">
+
+  <div class="filter">
+    <select class="custom-select" v-model="filter.radioNumber">
+      <option value="">(all)</option>
+      <option v-for="m in members">{{ m.radioNumber }}</option>
+    </select>
+  </div>
+
+  <br>
+
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>Member ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Gender</th>
+        <th>Job Title</th>
+        <th>Start Date</th>
+        <th>Date of Birth</th>
+        <th>Street</th>
+        <th>City</th>
+        <th>State</th>
+        <th>ZIP</th>
+        <th>Email</th>
+        <th>Work Phone Number</th>
+        <th>Mobile Phone Number</th>
+        <th>Radio Number</th>
+        <th>Station Number</th>
+        <th>Is Active?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="m in members" v-if="filter.radioNumber == '' || filter.radioNumber == m.radioNumber">
+        <td>{{ m.memberID }}</td>
+        <td>{{ m.firstName }}</td>
+        <td>{{ m.lastName }}</td>
+        <td>{{ m.gender }}</td>
+        <td>{{ m.jobTitle }}</td>
+        <td>{{ m.startDate }}</td>
+        <td>{{ m.dob }}</td>
+        <td>{{ m.street }}</td>
+        <td>{{ m.city }}</td>
+        <td>{{ m.state }}</td>
+        <td>{{ m.zip }}</td>
+        <td>{{ m.email }}</td>
+        <td>{{ m.workPhoneNumber }}</td>
+        <td>{{ m.mobilePhoneNumber }}</td>
+        <td>{{ m.radioNumber }}</td>
+        <td>{{ m.stationNumber }}</td>
+        <td>{{ m.isActive }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button onclick="exportTableToCSV('members_radio.csv')">Download as CSV</button>
+
+</div>
+
+<br>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/memberTable.app.js"></script>
+<script src="js/exportTableToCSV.app.js"></script>
+
+</body>
+</body>
+</html>
