@@ -4,11 +4,11 @@ $db = DbConnection::getConnection();
 // Step 2: Create & run the query
 if (isset($_GET['guid'])) {
   $stmt = $db->prepare(
-    'SELECT mc.memberCertification as memberCertification, m.firstName as firstName, m.lastName as lastName, c.certificationName as cName, mc.certificationRecieved as dateReceived, DATE_ADD(mc.certificationRecieved, INTERVAL c.expirationPeriod year) as dateExpired FROM ocfr.Member as m, ocfr.Certifications as c, ocfr.MemberCertifications as mc WHERE m.memberID = mc.memberID AND c.certificationID = mc.certificationID AND DATE_ADD(mc.certificationRecieved, INTERVAL c.expirationPeriod year) < CURDATE();'
+    'SELECT mc.memberCertification as memberCertification, m.firstName as firstName, m.lastName as lastName, c.certificationName as cName, mc.certificationRecieved as certificationRecieved, DATE_ADD(mc.certificationRecieved, INTERVAL c.expirationPeriod year) as dateExpired FROM ocfr.Member as m, ocfr.Certifications as c, ocfr.MemberCertifications as mc WHERE m.memberID = mc.memberID AND c.certificationID = mc.certificationID AND DATE_ADD(mc.certificationRecieved, INTERVAL c.expirationPeriod year) < CURDATE();'
   );
   $stmt->execute([$_GET['guid']]);
 } else {
-  $stmt = $db->prepare('SELECT mc.memberCertification as memberCertification, m.firstName as firstName, m.lastName as lastName, c.certificationName as cName, mc.certificationRecieved as dateReceived, DATE_ADD(mc.certificationRecieved, INTERVAL c.expirationPeriod year) as dateExpired FROM ocfr.Member as m, ocfr.Certifications as c, ocfr.MemberCertifications as mc WHERE m.memberID = mc.memberID AND c.certificationID = mc.certificationID AND DATE_ADD(mc.certificationRecieved, INTERVAL c.expirationPeriod year) < CURDATE();');
+  $stmt = $db->prepare('SELECT mc.memberCertification as memberCertification, m.firstName as firstName, m.lastName as lastName, c.certificationName as cName, mc.certificationRecieved as certificationRecieved, DATE_ADD(mc.certificationRecieved, INTERVAL c.expirationPeriod year) as dateExpired FROM ocfr.Member as m, ocfr.Certifications as c, ocfr.MemberCertifications as mc WHERE m.memberID = mc.memberID AND c.certificationID = mc.certificationID AND DATE_ADD(mc.certificationRecieved, INTERVAL c.expirationPeriod year) < CURDATE();');
   $stmt->execute();
 }
 $members = $stmt->fetchAll();
