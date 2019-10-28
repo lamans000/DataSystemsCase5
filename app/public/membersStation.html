@@ -1,5 +1,5 @@
 <html>
-<head> <title> Award Certifications Page </title>
+<head> <title> Members by Station Number Report Page </title>
 
 </head>
 <body>
@@ -48,7 +48,8 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="expiredCertifications.html">Members with Expired Certifications</a>
-          <a class="dropdown-item" href="membersStationRadio.html">Members by Station & Radio Number</a>
+          <a class="dropdown-item" href="membersStation.html">Members by Station</a>
+          <a class="dropdown-item" href="membersRadio.html">Members by Radio Number</a>
         </div>
       </li>
     </ul>
@@ -117,61 +118,7 @@
     </tbody>
   </table>
 
-  <br>
-
-  <div class="filter">
-    <select class="custom-select" v-model="filter.radioNumber">
-      <option value="">(all)</option>
-      <option v-for="m in members">{{ m.radioNumber }}</option>
-    </select>
-  </div>
-
-  <br>
-
-  <table class="table table-hover">
-    <thead class="thead-dark">
-      <tr>
-        <th>Member ID</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Gender</th>
-        <th>Job Title</th>
-        <th>Start Date</th>
-        <th>Date of Birth</th>
-        <th>Street</th>
-        <th>City</th>
-        <th>State</th>
-        <th>ZIP</th>
-        <th>Email</th>
-        <th>Work Phone Number</th>
-        <th>Mobile Phone Number</th>
-        <th>Radio Number</th>
-        <th>Station Number</th>
-        <th>Is Active?</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="m in members" v-if="filter.radioNumber == '' || filter.radioNumber == m.radioNumber">
-        <td>{{ m.memberID }}</td>
-        <td>{{ m.firstName }}</td>
-        <td>{{ m.lastName }}</td>
-        <td>{{ m.gender }}</td>
-        <td>{{ m.jobTitle }}</td>
-        <td>{{ m.startDate }}</td>
-        <td>{{ m.dob }}</td>
-        <td>{{ m.street }}</td>
-        <td>{{ m.city }}</td>
-        <td>{{ m.state }}</td>
-        <td>{{ m.zip }}</td>
-        <td>{{ m.email }}</td>
-        <td>{{ m.workPhoneNumber }}</td>
-        <td>{{ m.mobilePhoneNumber }}</td>
-        <td>{{ m.radioNumber }}</td>
-        <td>{{ m.stationNumber }}</td>
-        <td>{{ m.isActive }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <button onclick="exportTableToCSV('members_stations.csv')">Download as CSV</button>
 
 </div>
 
@@ -179,6 +126,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="js/memberTable.app.js"></script>
+<script src="js/exportTableToCSV.app.js"></script>
 
 </body>
 </body>
