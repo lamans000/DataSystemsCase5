@@ -24,10 +24,10 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown active">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Certifications
         </a>
@@ -62,8 +62,18 @@
 
 <br>
 
+<!-- Display all certifications held by members with VueJS functionality -->
 <div id="memberCertificationsTable" class="container">
 
+  <!-- Jumbotron and table elements provided by Bootstrap -->
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Member Certifications Table</h1>
+      <p class="lead">View all Certifications held by Members and Award new Certifications to Members</p>
+    </div>
+  </div>
+
+  <h3>Filter by Certification:</h3>
   <div class="filter">
     <select class="custom-select" v-model="filter.certificationName">
       <option value="">(all)</option>
@@ -72,7 +82,7 @@
   </div>
   <br>
 
-  <table class="table table-hover">
+  <table class="table">
     <thead class="thead-dark">
       <tr>
         <th>Member ID</th>
@@ -101,24 +111,41 @@
 <!-- Dynamic Dropdown completed with assistance from: https://stackoverflow.com/questions/43193721/vue-js-dynamic-dropdown -->
 <div id="updateMemberCertificationsTableApp" class="container">
 
+  <div class="alert alert-success" role="alert">
+    <h1 class="alert-heading">Award a New Certification</h1>
+    <h4>Unsure of Certification ID? Refer to the <a href="certification.html" class="alert-link">Modify Certifications page</a> for more info</h4>
+  </div>
+
   <!-- memberCertification -->
-    <label for="memberID" class="col-sm-2 col-form-label">Member Certification</label>
-    <div class="col-sm-10">
-      <input type="string" class="form-control" id="memberID" placeholder="15" v-model="memberCertificate.memberCertification" readonly>
+    <div class="form-group row">
+      <label for="memberCertificate" class="col-sm-2 col-form-label">Member Certification</label>
+      <div class="col-sm-10">
+        <input type="string" class="form-control" id="memberCertificate" placeholder="15" v-model="memberCertificate.memberCertification" readonly>
+      </div>
     </div>
   <!-- Dropdown for Members -->
-  <select class="custom-select" v-model="memberCertificate.memberID">
-    <option disabled value="">Select a Member</option>
-    <option v-for="m in members">{{ m.memberID }} - {{ m.firstName }} {{ m.lastName }}</option>
-  </select>
+  <div class="form-group row">
+    <label for="member" class="col-sm-2 col-form-label">Select a Member</label>
+    <div class="col-sm-10">
+    <select class="custom-select" v-model="memberCertificate.memberID">
+      <option disabled value="">Select a Member</option>
+      <option v-for="m in members">{{ m.memberID }} - {{ m.firstName }} {{ m.lastName }}</option>
+    </select>
+    </div>
+    </div>
   <!-- Dropdown for Existing Certifications -->
-  <select class="custom-select" v-model="memberCertificate.certificationID">
-    <option disabled value="">Select a Certification</option>
-    <option v-for="c in certificates">{{ c.certificationID}} - {{ c.certificationName }} / {{ c.certifyingAgency }}</option>
-  </select>
+  <div class="form-group row">
+    <label for="certification" class="col-sm-2 col-form-label">Certification Awarded</label>
+    <div class="col-sm-10">
+    <select class="custom-select" v-model="memberCertificate.certificationID">
+      <option disabled value="">Select a Certification</option>
+      <option v-for="c in certificates">{{ c.certificationID}} - {{ c.certificationName }} / {{ c.certifyingAgency }}</option>
+    </select>
+    </div>
+    </div>
   <!-- Date Certification Received -->
   <div class="form-group row">
-    <label for="certificationReceived" class="col-sm-2 col-form-label">Certification Received</label>
+    <label for="certificationReceived" class="col-sm-2 col-form-label">Date Certification Received</label>
     <div class="col-sm-10">
       <input type="string" class="form-control" id="certificationReceived" placeholder="2019-10-27" v-model="memberCertificate.certificationReceived">
     </div>

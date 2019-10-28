@@ -26,7 +26,7 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
@@ -41,7 +41,7 @@
           <div class="dropdown-divider"></div>
         </div>
       </li>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="members.html">Members</a>
       </li>
       <li class="nav-item dropdown">
@@ -211,12 +211,15 @@
       <input type="integer" class="form-control" id="stationNumber" placeholder="20" v-model="member.stationNumber">
     </div>
   </div>
-
-  <select class="custom-select" v-model="member.isActive">
-    <option disabled value="">Member Status</option>
-    <option value="Active">Active</option>
-    <option value="Inactive">Inactive</option>
-  </select>
+  <div class="form-group row">
+    <label for="inputstationNumber" class="col-sm-2 col-form-label">Member Status</label>
+    <div class="col-sm-10">
+    <select class="custom-select" v-model="member.isActive">
+      <option value="Active">Active</option>
+      <option value="Inactive">Inactive</option>
+    </select>
+  </div>
+  </div>
 
   <!-- <fieldset class="form-group">
     <div class="row">
